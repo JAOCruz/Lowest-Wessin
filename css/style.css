@@ -36,16 +36,16 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #00204a;
-  --bs-secondary: #005555;
+  --bs-primary: #2B2F4A;
+  --bs-secondary: #C89D6C;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
+  --bs-warning: #E2A45E;
   --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-primary-rgb: 0, 32, 74;
-  --bs-secondary-rgb: 0, 85, 85;
+  --bs-light: #F5F5F0;
+  --bs-dark: #1D2742;
+  --bs-primary-rgb: 43, 47, 74;
+  --bs-secondary-rgb: 200, 157, 108;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
@@ -56,15 +56,114 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Work Sans", sans-serif;
+  --bs-font-sans-serif: "Montserrat", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
-  --bs-body-bg: #fff; }
+  --bs-body-color: #2B2F4A;
+  --bs-body-bg: #F5F5F0; }
+  
+  /* CanaLaw Select Custom Color Palette */
+  :root {
+    --canalaw-primary: #2B2F4A;
+    --canalaw-accent: #C89D6C;
+    --canalaw-soft-white: #F5F5F0;
+    --canalaw-warm-beige: #EDEAE3;
+    --canalaw-deep-navy: #1D2742;
+    --canalaw-light-peach: #F2EDE3;
+    --canalaw-orange-gold: #E2A45E;
+    --canalaw-white: #FFFFFF;
+  }
+  
+  /* CanaLaw Select Typography */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+  
+  /* Title Fonts - Playfair Display */
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
+  .heading, .logo, .site-nav h1, .site-nav .h1 {
+    font-family: 'Playfair Display', serif !important;
+  }
+  
+  /* Body Text Font - Montserrat */
+  body, p, span, div, a, li, input, textarea, select, button {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  
+  /* CanaLaw Select Custom Styles */
+  .hero {
+    background-color: var(--canalaw-soft-white);
+  }
+  
+  .section {
+    background-color: var(--canalaw-white);
+  }
+  
+  .site-nav {
+    background: transparent !important;
+  }
+  
+  .btn-primary {
+    background-color: var(--canalaw-accent) !important;
+    border-color: var(--canalaw-accent) !important;
+    color: var(--canalaw-white) !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--canalaw-deep-navy) !important;
+    border-color: var(--canalaw-deep-navy) !important;
+  }
+  
+  .btn.btn-primary {
+    background-color: var(--canalaw-accent) !important;
+    border-color: var(--canalaw-accent) !important;
+    color: var(--canalaw-white) !important;
+  }
+  
+  .text-primary {
+    color: var(--canalaw-primary) !important;
+  }
+  
+  .bg-primary {
+    background-color: var(--canalaw-accent) !important;
+  }
+  
+  /* Override Bootstrap button styles */
+  .btn-primary,
+  .btn.btn-primary,
+  button.btn-primary,
+  input[type="submit"].btn-primary,
+  .btn-primary:focus,
+  .btn.btn-primary:focus,
+  button.btn-primary:focus,
+  input[type="submit"].btn-primary:focus {
+    background-color: var(--canalaw-accent) !important;
+    border-color: var(--canalaw-accent) !important;
+    color: var(--canalaw-white) !important;
+  }
+  
+  .btn-primary:hover,
+  .btn.btn-primary:hover,
+  button.btn-primary:hover,
+  input[type="submit"].btn-primary:hover {
+    background-color: var(--canalaw-deep-navy) !important;
+    border-color: var(--canalaw-deep-navy) !important;
+  }
+  
+  /* Override all Bootstrap button states */
+  .btn-check:focus + .btn-primary,
+  .btn-primary:focus,
+  .btn-check:checked + .btn-primary,
+  .btn-check:active + .btn-primary,
+  .btn-primary.active,
+  .btn-primary:active,
+  .show > .btn-primary.dropdown-toggle {
+    background-color: var(--canalaw-accent) !important;
+    border-color: var(--canalaw-accent) !important;
+    color: var(--canalaw-white) !important;
+  }
 
 *,
 *::before,
@@ -2559,8 +2658,8 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #fff;
-  background-color: #005555;
-  border-color: #005555; }
+  background-color: var(--canalaw-accent);
+  border-color: var(--canalaw-accent); }
   .btn-secondary:hover {
     color: #fff;
     background-color: #004848;
@@ -2584,8 +2683,8 @@ textarea.form-control-lg {
       box-shadow: 0 0 0 0.25rem rgba(38, 111, 111, 0.5); }
   .btn-secondary:disabled, .btn-secondary.disabled {
     color: #fff;
-    background-color: #005555;
-    border-color: #005555; }
+    background-color: var(--canalaw-accent);
+    border-color: var(--canalaw-accent); }
 
 .btn-success {
   color: #fff;
@@ -9193,10 +9292,13 @@ textarea.form-control-lg {
 
 .logo {
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-weight: 500; }
+  color: #152a4f !important;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif !important;
+  text-decoration: none; }
   .logo:hover {
-    color: #fff !important; }
+    color: var(--canalaw-accent) !important;
+    text-decoration: none; }
 
 .site-nav {
   padding-top: 20px;
@@ -9218,9 +9320,9 @@ textarea.form-control-lg {
         padding: 10px 15px;
         display: inline-block;
         text-decoration: none !important;
-        color: rgba(255, 255, 255, 0.5); }
+        color: #152a4f; }
         .site-nav .site-navigation .site-menu > li > a:hover {
-          color: #fff; }
+          color: var(--canalaw-accent); }
       .site-nav .site-navigation .site-menu > li.cta-button a {
         padding: 6px 20px;
         border: 2px solid rgba(0, 0, 0, 0.1);
@@ -9228,10 +9330,10 @@ textarea.form-control-lg {
         border-radius: 30px; }
         .site-nav .site-navigation .site-menu > li.cta-button a:hover {
           color: #000;
-          background: #00204a;
-          border-color: #00204a; }
+          background: var(--canalaw-accent);
+          border-color: var(--canalaw-accent); }
       .site-nav .site-navigation .site-menu > li.active > a {
-        color: #fff; }
+        color: var(--canalaw-accent); }
     .site-nav .site-navigation .site-menu .has-children {
       position: relative; }
       .site-nav .site-navigation .site-menu .has-children > a {
@@ -9587,7 +9689,7 @@ html {
   overflow-x: hidden; }
 
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 14px;
   overflow-x: hidden; }
@@ -9610,7 +9712,7 @@ body {
     visibility: visible; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .logo {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Playfair Display", serif;
   color: #00204a; }
 
 a {
@@ -9653,7 +9755,7 @@ textarea {
   transform: translate(-50%, -50%); }
 
 .menu-bg-wrap {
-  background-color: #005555;
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 20px 30px;
   position: relative;
   float: left;
@@ -9714,7 +9816,7 @@ textarea {
   .hero .form-search .form-control {
     margin-right: 10px; }
   .hero .form-search .btn {
-    background-color: #005555;
+    background-color: var(--canalaw-accent);
     padding-left: 30px;
     padding-right: 30px;
     color: #fff; }
@@ -9795,8 +9897,8 @@ textarea {
   -o-transition: .3s all ease;
   transition: .3s all ease; }
   .btn.btn-primary {
-    background: #005555;
-    color: #fff; }
+    background: var(--canalaw-accent);
+    color: var(--canalaw-white); }
   .btn:hover {
     top: -2px;
     -webkit-box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
