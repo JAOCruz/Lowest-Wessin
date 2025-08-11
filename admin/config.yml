@@ -1,0 +1,65 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://canalawselect.netlify.app
+logo_url: /favicon.png
+
+media_library:
+  name: s3
+  config:
+    bucket: canalaw
+    region: nyc3
+    publicFolder: https://canalaw.nyc3.cdn.digitaloceanspaces.com
+    endpoint: https://nyc3.digitaloceanspaces.com
+    accessKeyId: YOUR_DO_SPACES_ACCESS_KEY
+    secretAccessKey: YOUR_DO_SPACES_SECRET
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: properties
+    label: Properties
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: data/properties.json
+        label: Properties List
+        name: properties_list
+        fields:
+          - label: Properties
+            name: properties
+            widget: list
+            summary: "{{fields.title}} — ${{fields.priceUSD}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Slug, name: slug, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Region, name: region, widget: select, options: ["Punta Cana", "Santo Domingo", "Santiago", "Puerto Plata", "Samaná"] }
+              - { label: Address, name: address, widget: text }
+              - label: Coordinates
+                name: coords
+                widget: object
+                fields:
+                  - { label: Latitude, name: lat, widget: number, value_type: float }
+                  - { label: Longitude, name: lng, widget: number, value_type: float }
+              - { label: Price (USD), name: priceUSD, widget: number, value_type: int, min: 0 }
+              - { label: Total Size (m²), name: sizeM2, widget: number, value_type: float }
+              - { label: Bedrooms, name: beds, widget: number, value_type: int }
+              - { label: Bathrooms, name: baths, widget: number, value_type: float }
+              - { label: Apartment m², name: apartmentM2, widget: number, value_type: float, required: false }
+              - { label: Parking m², name: parkingM2, widget: number, value_type: float, required: false }
+              - { label: Storage m², name: storageM2, widget: number, value_type: float, required: false }
+              - { label: Features, name: features, widget: list, required: false }
+              - { label: Amenities, name: amenities, widget: list, required: false }
+              - { label: Images (CDN URLs recommended), name: images, widget: list, field: {label: Image, name: url, widget: string} }
+              - { label: Featured, name: featured, widget: boolean, default: false }
+              - { label: Status, name: status, widget: select, options: [published, draft], default: published }
+              - { label: Confotur, name: confotur, widget: boolean, default: false }
+              - { label: Appraisal URL, name: appraisalUrl, widget: string, required: false }
+              - { label: Description, name: description, widget: text }
+              - { label: SEO Title, name: seoTitle, widget: string, required: false }
+              - { label: SEO Description, name: seoDescription, widget: text, required: false }
+              - { label: Created At, name: createdAt, widget: datetime, required: false }
+              - { label: Updated At, name: updatedAt, widget: datetime, required: false } 
