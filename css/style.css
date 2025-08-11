@@ -66,7 +66,7 @@
   --bs-body-color: #2B2F4A;
   --bs-body-bg: #F5F5F0; }
   
-  /* CanaLaw Select Custom Color Palette */
+  /* CANA LAW SELECTION Custom Color Palette */
   :root {
     --canalaw-primary: #10284D;
     --canalaw-accent: #CBA135;
@@ -78,7 +78,7 @@
     --canalaw-white: #FFFFFF;
   }
   
-  /* CanaLaw Select Typography */
+  /* CANA LAW SELECTION Typography */
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
   
   /* Title Fonts - Playfair Display */
@@ -92,7 +92,7 @@
     font-family: 'Montserrat', sans-serif !important;
   }
   
-  /* CanaLaw Select Custom Styles */
+  /* CANA LAW SELECTION Custom Styles */
 .section-counter .number,
 .section-counter .number .countup {
   color: var(--canalaw-accent) !important;
@@ -9299,6 +9299,7 @@ textarea.form-control-lg {
   color: #152a4f !important;
   font-weight: 500;
   font-family: 'Playfair Display', serif !important;
+  letter-spacing: 0.08em;
   text-decoration: none; }
   .logo:hover {
     color: var(--canalaw-accent) !important;
@@ -9418,7 +9419,7 @@ textarea.form-control-lg {
           .site-nav .site-navigation .site-menu .has-children .dropdown > li.has-children:hover > a, .site-nav .site-navigation .site-menu .has-children .dropdown > li.has-children:active > a, .site-nav .site-navigation .site-menu .has-children .dropdown > li.has-children:focus > a {
             color: #00204a; }
       .site-nav .site-navigation .site-menu .has-children:hover > a, .site-nav .site-navigation .site-menu .has-children:focus > a, .site-nav .site-navigation .site-menu .has-children:active > a {
-        color: #fff; }
+        color: var(--canalaw-accent); }
       .site-nav .site-navigation .site-menu .has-children:hover, .site-nav .site-navigation .site-menu .has-children:focus, .site-nav .site-navigation .site-menu .has-children:active {
         cursor: pointer; }
         .site-nav .site-navigation .site-menu .has-children:hover > .dropdown, .site-nav .site-navigation .site-menu .has-children:focus > .dropdown, .site-nav .site-navigation .site-menu .has-children:active > .dropdown {
@@ -9993,7 +9994,17 @@ textarea {
 
 .property-item .img {
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 7px; }
+.property-item .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .property-item .property-content {
   background: #fff;
@@ -10479,5 +10490,13 @@ nav[aria-label="breadcrumb"] li:before {
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
       .site-footer .social li a:hover {
-        background: #00204a;
-        color: #fff; }
+  background: #00204a;
+  color: #fff; }
+
+/* FAQ styles */
+.faq .accordion-button { color: var(--canalaw-deep-navy); font-weight: 600; }
+.faq .accordion-button:focus { box-shadow: none; }
+.faq .accordion-button:not(.collapsed) { color: var(--canalaw-deep-navy); background-color: var(--canalaw-soft-white); box-shadow: none; }
+.faq .accordion-item { border: 1px solid rgba(0,0,0,0.06); border-radius: 6px; margin-bottom: 10px; }
+.faq .accordion-body { color: #333; }
+.faq .heading { color: var(--canalaw-deep-navy); }
