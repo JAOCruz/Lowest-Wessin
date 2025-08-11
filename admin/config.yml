@@ -5,15 +5,8 @@ backend:
 site_url: https://canalawselect.netlify.app
 logo_url: /favicon.png
 
-media_library:
-  name: s3
-  config:
-    bucket: canalaw
-    region: nyc3
-    publicFolder: https://canalaw.nyc3.cdn.digitaloceanspaces.com
-    endpoint: https://nyc3.digitaloceanspaces.com
-    accessKeyId: YOUR_DO_SPACES_ACCESS_KEY
-    secretAccessKey: YOUR_DO_SPACES_SECRET
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 publish_mode: editorial_workflow
 
@@ -53,7 +46,7 @@ collections:
               - { label: Storage m², name: storageM2, widget: number, value_type: float, required: false }
               - { label: Features, name: features, widget: list, required: false }
               - { label: Amenities, name: amenities, widget: list, required: false }
-              - { label: Images (CDN URLs recommended), name: images, widget: list, field: {label: Image, name: url, widget: string} }
+              - { label: Images (upload files), name: images, widget: list, field: {label: Image, name: image, widget: image} }
               - { label: Featured, name: featured, widget: boolean, default: false }
               - { label: Status, name: status, widget: select, options: [published, draft], default: published }
               - { label: Confotur, name: confotur, widget: boolean, default: false }

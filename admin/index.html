@@ -11,28 +11,40 @@
     window.CMS_MANUAL_INIT = true;
   </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Try Decap S3 media library -->
   <script src="https://unpkg.com/decap-cms-media-library-s3@^1.0.0/dist/decap-cms-media-library-s3.js"></script>
+  <!-- Fallback: legacy Netlify S3 media library -->
+  <script src="https://unpkg.com/netlify-cms-media-library-s3@^1.0.0/dist/netlify-cms-media-library-s3.js"></script>
   <script>
     (function registerAndInit() {
-      function tryInit() {
+      function tryInit(forceInit) {
         var CMSGlobal = window.CMS || window.decapCMS;
-        var s3Lib = window['decap-cms-media-library-s3'] || window.decapCMSMediaLibraryS3 || window.S3MediaLibrary;
-        if (CMSGlobal && s3Lib) {
-          CMSGlobal.registerMediaLibrary(s3Lib);
-          CMSGlobal.init();
-          return true;
+        var s3Lib =
+          window['decap-cms-media-library-s3'] ||
+          window.decapCMSMediaLibraryS3 ||
+          window['netlify-cms-media-library-s3'] ||
+          window.NetlifyCmsS3 ||
+          window.S3MediaLibrary;
+        if (CMSGlobal) {
+          if (s3Lib) {
+            try { CMSGlobal.registerMediaLibrary(s3Lib); } catch (e) { /* no-op */ }
+          }
+          if (forceInit || s3Lib) {
+            CMSGlobal.init();
+            return true;
+          }
         }
         return false;
       }
-      if (!tryInit()) {
-        var attempts = 0;
-        var timer = setInterval(function () {
-          attempts++;
-          if (tryInit() || attempts > 200) {
-            clearInterval(timer);
-          }
-        }, 50);
-      }
+      // Attempt quickly a few times to catch script load order
+      var attempts = 0;
+      var timer = setInterval(function () {
+        attempts++;
+        // After ~2 seconds, init even if s3 lib not detected so UI shows config errors instead of blank page
+        if (tryInit(attempts > 40) || attempts > 200) {
+          clearInterval(timer);
+        }
+      }, 50);
     })();
   </script>
 </body>
