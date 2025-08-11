@@ -7,13 +7,33 @@
 </head>
 <body>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script src="https://unpkg.com/decap-cms-media-library-s3@^1.0.0/dist/decap-cms-media-library-s3.js"></script>
   <script>
-    // Register the S3 media library
-    if (window.decapCMS) {
-      window.decapCMS.registerMediaLibrary(window.decapCMSMediaLibraryS3);
-    }
+    (function registerAndInit() {
+      function tryInit() {
+        var CMSGlobal = window.CMS || window.decapCMS;
+        var s3Lib = window['decap-cms-media-library-s3'] || window.decapCMSMediaLibraryS3 || window.S3MediaLibrary;
+        if (CMSGlobal && s3Lib) {
+          CMSGlobal.registerMediaLibrary(s3Lib);
+          CMSGlobal.init();
+          return true;
+        }
+        return false;
+      }
+      if (!tryInit()) {
+        var attempts = 0;
+        var timer = setInterval(function () {
+          attempts++;
+          if (tryInit() || attempts > 200) {
+            clearInterval(timer);
+          }
+        }, 50);
+      }
+    })();
   </script>
 </body>
 </html> 
