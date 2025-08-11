@@ -68,11 +68,11 @@
   
   /* CanaLaw Select Custom Color Palette */
   :root {
-    --canalaw-primary: #2B2F4A;
-    --canalaw-accent: #C89D6C;
+    --canalaw-primary: #10284D;
+    --canalaw-accent: #CBA135;
     --canalaw-soft-white: #F5F5F0;
     --canalaw-warm-beige: #EDEAE3;
-    --canalaw-deep-navy: #1D2742;
+    --canalaw-deep-navy: #10284D;
     --canalaw-light-peach: #F2EDE3;
     --canalaw-orange-gold: #E2A45E;
     --canalaw-white: #FFFFFF;
@@ -93,6 +93,10 @@
   }
   
   /* CanaLaw Select Custom Styles */
+.section-counter .number,
+.section-counter .number .countup {
+  color: var(--canalaw-accent) !important;
+}
   .hero {
     background-color: var(--canalaw-soft-white);
   }
