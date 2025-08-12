@@ -1,9 +1,9 @@
 {
   "properties": [
     {
-      "id": "torre-elipse-3c",
-      "slug": "torre-elipse-3c",
-      "title": "Torre Elipse 3-C — Bella Vista",
+      "id": "torre-elipse-type-c",
+      "slug": "torre-elipse-type-c",
+      "title": "Torre Elipse — Apartment Type C — Bella Vista",
       "region": "Santo Domingo",
       "address": "Av. Sarasota corner Av. Jiménez Moya, Bella Vista, Santo Domingo, Dominican Republic",
       "coords": { "lat": 18.458751, "lng": -69.933181 },
@@ -53,8 +53,8 @@
       "confotur": false,
       "appraisalUrl": "",
       "description": "Legally vetted apartment in Torre Elipse. High-end Bella Vista location with full condo amenities and secure title.",
-      "seoTitle": "Torre Elipse 3-C — Bella Vista, Santo Domingo | Cana Law Selection",
-      "seoDescription": "2 bed, 2.5 bath, 204.38 m² apartment in Bella Vista. Legally vetted with full due diligence and secure closing.",
+      "seoTitle": "Torre Elipse — Apartment Type C — Bella Vista, Santo Domingo | Cana Law Selection",
+      "seoDescription": "Apartment Type C: 2 bed, 2.5 bath, 204.38 m² in Bella Vista. Legally vetted with full due diligence and secure closing.",
       "createdAt": "2025-06-13T00:00:00.000Z",
       "updatedAt": "2025-06-13T00:00:00.000Z"
     }

@@ -118,7 +118,7 @@
 			});
 		}
 	}
-	tinySdlier();
+	window.addEventListener('load', tinySdlier);
 
 
 
