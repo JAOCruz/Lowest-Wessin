@@ -2,22 +2,59 @@
   'use strict';
 
   const DATA_URL = 'data/properties.json';
+  const INDEX_URL = 'data/properties-index.json';
+  const FILE_BASE = 'data/properties/';
 
   function usd(n){
     return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);
   }
 
   async function fetchProperties(){
-    const res = await fetch(DATA_URL, {cache: 'no-cache'});
-    const data = await res.json();
-    if (Array.isArray(data)) return data;
-    if (Array.isArray(data.properties)) return data.properties;
-    if (Array.isArray(data.items)) return data.items;
-    return [];
+    // Try legacy single JSON first
+    try {
+      const res = await fetch(DATA_URL, {cache: 'no-cache'});
+      if (res.ok) {
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (Array.isArray(data.properties) ? data.properties : (Array.isArray(data.items) ? data.items : []));
+        if (list && list.length) return list;
+      }
+    } catch(e) { /* fall through to index */ }
+    // Fallback to folder-based index of slugs
+    try {
+      const res = await fetch(INDEX_URL, {cache: 'no-cache'});
+      if (!res.ok) return [];
+      const idx = await res.json();
+      const slugs = Array.isArray(idx) ? idx : (Array.isArray(idx.slugs) ? idx.slugs : (Array.isArray(idx.items) ? idx.items : []));
+      if (!slugs || !slugs.length) return [];
+      const files = await Promise.all(slugs.map(async (slug)=>{
+        try {
+          const fr = await fetch(FILE_BASE + encodeURIComponent(slug) + '.json', {cache: 'no-cache'});
+          if (!fr.ok) return null;
+          return await fr.json();
+        } catch(e){ return null; }
+      }));
+      return files.filter(Boolean);
+    } catch(e){
+      return [];
+    }
+  }
+
+  function imageUrlFromEntry(entry){
+    if (typeof entry === 'string') return entry;
+    if (!entry || typeof entry !== 'object') return '';
+    return entry.image || entry.url || entry.src || '';
+  }
+
+  function firstImageUrl(property){
+    if (!property || !Array.isArray(property.images) || property.images.length === 0) {
+      return 'images/img_1.jpg';
+    }
+    const candidate = imageUrlFromEntry(property.images[0]);
+    return candidate || 'images/img_1.jpg';
   }
 
   function renderCard(p){
-    const img = (p.images && p.images[0]) || 'images/img_1.jpg';
+    const img = firstImageUrl(p);
     return `
     <div class="property-item">
       <a href="property.html?slug=${encodeURIComponent(p.slug)}" class="img"><img src="${img}" alt="${p.title}" class="img-fluid" /></a>
@@ -61,7 +98,10 @@
   }
 
   function imgsHtml(imgs){
-    return imgs.map(src=>`<img src="${src}" class="img-fluid" alt="">`).join('\n');
+    return (imgs || []).map(function(entry){
+      var src = imageUrlFromEntry(entry);
+      return src ? `<img src="${src}" class="img-fluid" alt="">` : '';
+    }).join('\n');
   }
 
   async function renderDetail(){

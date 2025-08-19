@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: https://canalawselect.netlify.app
+site_url: https://cana.law
 logo_url: /favicon.png
 
 media_folder: "images/uploads"
