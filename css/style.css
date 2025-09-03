@@ -10500,3 +10500,154 @@ nav[aria-label="breadcrumb"] li:before {
 .faq .accordion-item { border: 1px solid rgba(0,0,0,0.06); border-radius: 6px; margin-bottom: 10px; }
 .faq .accordion-body { color: #333; }
 .faq .heading { color: var(--canalaw-deep-navy); }
+
+/* Custom styles for Cana Law Selection */
+
+.hero-cta .btn {
+  min-width: 200px;
+}
+
+.trust-cue {
+  margin-top: 2rem;
+}
+
+.property-card {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.process-number {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.alert-warning {
+  border-left: 4px solid #ffc107;
+  background-color: #fff3cd;
+  border-color: #ffeaa7;
+}
+
+.guide-icon {
+  margin-bottom: 1rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .hero-cta .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-cta .btn:last-child {
+    margin-bottom: 0;
+  }
+  
+  .process-number {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Accessibility improvements */
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.property-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced button styles */
+.btn-outline-primary {
+  border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Trust cue styling */
+.trust-cue .rate {
+  font-size: 1.2rem;
+}
+
+/* Process section enhancements */
+.process-number {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Lead magnet section */
+#guide {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Property card badges */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Enhanced typography */
+.lead {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Footer improvements */
+.site-footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+.site-footer h3 {
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #3498db;
+}
+
+/* Form enhancements */
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Animation delays for better UX */
+[data-aos-delay="100"] {
+  transition-delay: 0.1s;
+}
+
+[data-aos-delay="200"] {
+  transition-delay: 0.2s;
+}
+
+[data-aos-delay="300"] {
+  transition-delay: 0.3s;
+}
+
+[data-aos-delay="400"] {
+  transition-delay: 0.4s;
+}
