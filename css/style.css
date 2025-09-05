@@ -10651,3 +10651,27 @@ html {
 [data-aos-delay="400"] {
   transition-delay: 0.4s;
 }
+
+
+
+/* Circular profile photo container */
+
+/* Alternative: Perfect circle with fixed dimensions */
+
+/* Container for circular photo with shadow */
+.profile-photo-container {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 300px;
+}
+
+.profile-photo-container img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
