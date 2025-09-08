@@ -10993,3 +10993,96 @@ html {
     padding: 15px;
   }
 }
+
+/* Enhanced Footer Social Icons Visibility */
+.site-footer .social li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #ffffff !important;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 8px;
+}
+
+.site-footer .social li a:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #2c5282 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual icon styling for better visibility */
+.site-footer .social li a .icon-instagram {
+  color: #ffffff !important;
+  font-size: 22px;
+}
+
+.site-footer .social li a .icon-facebook {
+  color: #ffffff !important;
+  font-size: 22px;
+}
+
+.site-footer .social li a .icon-linkedin {
+  color: #ffffff !important;
+  font-size: 22px;
+}
+
+.site-footer .social li a .icon-dribbble {
+  color: #ffffff !important;
+  font-size: 22px;
+}
+
+/* Hover states for individual icons */
+.site-footer .social li a:hover .icon-instagram {
+  color: #E4405F !important;
+}
+
+.site-footer .social li a:hover .icon-facebook {
+  color: #1877F2 !important;
+}
+
+.site-footer .social li a:hover .icon-linkedin {
+  color: #0077B5 !important;
+}
+
+.site-footer .social li a:hover .icon-dribbble {
+  color: #EA4C89 !important;
+}
+
+/* Social icons container */
+.site-footer .social {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.site-footer .social li {
+  margin: 0;
+  list-style: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .site-footer .social li a {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    margin: 0 6px;
+  }
+  
+  .site-footer .social li a .icon-instagram,
+  .site-footer .social li a .icon-facebook,
+  .site-footer .social li a .icon-linkedin,
+  .site-footer .social li a .icon-dribbble {
+    font-size: 20px;
+  }
+}
