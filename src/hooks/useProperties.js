@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { asset } from '../lib/assets'
 
-const DATA_URL = '/data/properties.json'
-const INDEX_URL = '/data/properties-index.json'
-const FILE_BASE = '/data/properties/'
+const DATA_URL = asset('/data/properties.json')
+const INDEX_URL = asset('/data/properties-index.json')
+const FILE_BASE = asset('/data/properties/')
 
 let cachedProperties = null
 

@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ArrowRight } from 'lucide-react'
 import { CONSULTATION_URL } from '../../lib/constants'
+import { asset } from '../../lib/assets'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
 
 const heroImages = [
-  '/images/propertiesrd/1/1.jpg',
-  '/images/propertiesrd/2/3.jpg',
-  '/images/propertiesrd/3/5.jpg',
+  asset('/images/propertiesrd/1/1.jpg'),
+  asset('/images/propertiesrd/2/3.jpg'),
+  asset('/images/propertiesrd/3/5.jpg'),
 ]
 
 export default function HeroSection() {

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { NAV_LINKS, CONSULTATION_URL } from '../../lib/constants'
+import { asset } from '../../lib/assets'
 import Button from '../ui/Button'
 import MobileMenu from './MobileMenu'
 
@@ -16,7 +17,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-24">
             <Link to="/" className="flex-shrink-0">
               <img
-                src="/images/logo1.png"
+                src={asset('/images/logo1.png')}
                 alt="Cana Law"
                 className="h-16 w-auto"
               />

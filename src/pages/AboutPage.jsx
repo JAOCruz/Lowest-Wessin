@@ -1,5 +1,6 @@
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
 import { CONSULTATION_URL } from '../lib/constants'
+import { asset } from '../lib/assets'
 import { useFadeUp, useStaggerReveal } from '../hooks/useGSAP'
 import SEOHead from '../components/shared/SEOHead'
 import Container from '../components/ui/Container'
@@ -52,7 +53,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/images/4.jpeg"
+                src={asset('/images/4.jpeg')}
                 alt="Gonzalo Sánchez - Managing Partner at Cana Law"
                 className="w-full max-w-md mx-auto rounded-2xl object-cover aspect-[3/4]"
                 loading="eager"

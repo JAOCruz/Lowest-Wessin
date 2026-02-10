@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { CONSULTATION_URL } from '../../lib/constants'
+import { asset } from '../../lib/assets'
 import { useFadeUp } from '../../hooks/useGSAP'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
@@ -13,7 +14,7 @@ export default function MeetGonzalo() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
           <div className="lg:col-span-1">
             <img
-              src="/images/4.jpeg"
+              src={asset('/images/4.jpeg')}
               alt="Gonzalo Sánchez - Dominican Real Estate Attorney"
               className="w-full max-w-sm mx-auto rounded-2xl object-cover aspect-[3/4]"
               loading="lazy"

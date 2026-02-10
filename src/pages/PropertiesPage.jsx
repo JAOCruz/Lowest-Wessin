@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { MapPin, BedDouble, Bath, Maximize2 } from 'lucide-react'
 import { useProperties } from '../hooks/useProperties'
 import { formatUSD, formatArea } from '../lib/formatters'
+import { asset } from '../lib/assets'
 import { useFadeUp, useStaggerReveal } from '../hooks/useGSAP'
 import SEOHead from '../components/shared/SEOHead'
 import Container from '../components/ui/Container'
@@ -9,9 +10,10 @@ import GlassCard from '../components/ui/GlassCard'
 import Badge from '../components/ui/Badge'
 
 function getImageUrl(property) {
-  if (!property.images || !property.images.length) return '/images/hero_bg_1.jpg'
+  if (!property.images || !property.images.length) return asset('/images/hero_bg_1.jpg')
   const first = property.images[0]
-  return typeof first === 'string' ? first : first.url || first.src || '/images/hero_bg_1.jpg'
+  const url = typeof first === 'string' ? first : first.url || first.src || '/images/hero_bg_1.jpg'
+  return url.startsWith('/') ? asset(url) : url
 }
 
 function PropertyCard({ property }) {

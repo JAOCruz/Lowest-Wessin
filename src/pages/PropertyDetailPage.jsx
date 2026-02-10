@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import { useProperty } from '../hooks/useProperties'
 import { formatUSD, formatArea } from '../lib/formatters'
+import { asset } from '../lib/assets'
 import { propertySchema } from '../lib/schema'
 import { useFadeUp } from '../hooks/useGSAP'
 import { CONSULTATION_URL } from '../lib/constants'
@@ -16,10 +17,11 @@ import Badge from '../components/ui/Badge'
 import Button from '../components/ui/Button'
 
 function getImageUrls(property) {
-  if (!property.images || !property.images.length) return ['/images/hero_bg_1.jpg']
-  return property.images.map((img) =>
-    typeof img === 'string' ? img : img.url || img.src || '/images/hero_bg_1.jpg'
-  )
+  if (!property.images || !property.images.length) return [asset('/images/hero_bg_1.jpg')]
+  return property.images.map((img) => {
+    const url = typeof img === 'string' ? img : img.url || img.src || '/images/hero_bg_1.jpg'
+    return url.startsWith('/') ? asset(url) : url
+  })
 }
 
 function ImageGallery({ images }) {
