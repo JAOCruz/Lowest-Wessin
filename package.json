@@ -1,9 +1,25 @@
 {
+  "name": "canalaw-rd",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "live-server --port=3000 --open=/index.html",
-    "start": "live-server --port=3000 --open=/index.html"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "live-server": "^1.2.2"
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^7.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@vitejs/plugin-react": "^5.1.3",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.1"
   }
 }
