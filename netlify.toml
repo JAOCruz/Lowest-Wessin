@@ -3,6 +3,11 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/selection/*"
+  to = "/selection/index.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/selection/index.html"
   status = 200
