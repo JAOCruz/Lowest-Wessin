@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import { GOOGLE_REVIEWS_URL } from '../../lib/constants'
 import { useFadeUp } from '../../hooks/useGSAP'
@@ -32,10 +32,20 @@ const testimonials = [
 
 export default function TestimonialCarousel() {
   const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
   const ref = useFadeUp()
 
   const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1))
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
+
+  // Auto-advance every 5s unless user has interacted
+  useEffect(() => {
+    if (paused) return
+    const timer = setInterval(() => {
+      setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [paused])
 
   const t = testimonials[current]
 
@@ -49,24 +59,29 @@ export default function TestimonialCarousel() {
 
         <div className="max-w-2xl mx-auto">
           <GlassCard className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-6">
-              {[...Array(t.rating)].map((_, i) => (
-                <Star key={i} size={18} className="fill-gold text-gold" />
-              ))}
-            </div>
+            <div
+              key={current}
+              style={{ animation: 'fadeSlideIn 0.4s ease' }}
+            >
+              <div className="flex items-center justify-center gap-1 mb-6">
+                {[...Array(t.rating)].map((_, i) => (
+                  <Star key={i} size={18} className="fill-gold text-gold" />
+                ))}
+              </div>
 
-            <blockquote className="text-lg text-navy leading-relaxed mb-8 font-body">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
+              <blockquote className="text-lg text-navy leading-relaxed mb-8 font-body">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
 
-            <div className="mb-6">
-              <p className="font-display font-bold text-navy">{t.name}</p>
-              <p className="text-sm text-body/50">{t.role}</p>
+              <div className="mb-6">
+                <p className="font-display font-bold text-navy">{t.name}</p>
+                <p className="text-sm text-body/50">{t.role}</p>
+              </div>
             </div>
 
             <div className="flex items-center justify-center gap-4">
               <button
-                onClick={prev}
+                onClick={() => { setPaused(true); prev() }}
                 className="w-10 h-10 rounded-full border border-navy/10 flex items-center justify-center text-navy/50 hover:text-gold hover:border-gold/30 transition-colors focus-visible:ring-2 focus-visible:ring-gold"
                 aria-label="Previous testimonial"
               >
@@ -77,9 +92,9 @@ export default function TestimonialCarousel() {
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => setCurrent(i)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      i === current ? 'bg-gold w-6' : 'bg-navy/15'
+                    onClick={() => { setPaused(true); setCurrent(i) }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === current ? 'bg-gold w-6' : 'bg-navy/15 w-2'
                     }`}
                     aria-label={`Go to testimonial ${i + 1}`}
                   />
@@ -87,7 +102,7 @@ export default function TestimonialCarousel() {
               </div>
 
               <button
-                onClick={next}
+                onClick={() => { setPaused(true); next() }}
                 className="w-10 h-10 rounded-full border border-navy/10 flex items-center justify-center text-navy/50 hover:text-gold hover:border-gold/30 transition-colors focus-visible:ring-2 focus-visible:ring-gold"
                 aria-label="Next testimonial"
               >
